@@ -1,0 +1,22 @@
+name: Build and Publish Docker Image
+
+on: push
+env:
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2
+
+      - name: Login to DockerHub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build docker
+        run: chmod +x ci/build-docker.sh && ci/build-docker.sh
+        
+      - name: Push docker
+        run: chmod +x ci/push-docker.sh && ci/push-docker.sh
