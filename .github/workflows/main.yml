@@ -57,6 +57,5 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push Docker image
-        uses: docker-build-push@v6
-        with:
-          image: nikim1/DevOpsClasswork1
+        run: |
+        docker push nikim1/DevOpsClasswork1:latest
