@@ -19,7 +19,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           npm install -g snyk
-          snyk auth ${{secrets.SNYK_AUTH_TOKEN}}
+          snyk auth ${{secrets.SNYK_TOKEN}}
           snyk test
 
   SonarCloudTest:
@@ -43,19 +43,25 @@ jobs:
       - name: Check out the code
         uses: actions/checkout@v2
 
+      - name: Login to DockerHub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build an image
+        run: docker build -t "my-first-python" .
+
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'nikim1/DevOpsClasswork1'
+          image-ref: 'my-first-python'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
 
-      - name: Login to DockerHub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Tag an image
+        run: docker tag my-first-python nikim1/DevOpsClasswork1
 
-      - name: Build and push Docker image
+      - name: Push Docker image
         run: |
           docker push nikim1/DevOpsClasswork1
