@@ -19,7 +19,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           npm install -g snyk
-          snyk auth ${{secrets.SNYK_TOKEN}}
+          snyk auth ${{secrets.SNYK_AUTH_TOKEN}}
           snyk test
 
   SonarCloudTest:
