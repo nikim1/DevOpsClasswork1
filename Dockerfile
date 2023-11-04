@@ -7,7 +7,7 @@ RUN apt-get install -y python3 python3-pip
 
 # Copy requirements file and install dependencies
 COPY src/requirements.txt .
-RUN pip3 install -r src/requirements.txt
+RUN pip3 install -r requirements.txt
 
 # Copy the Python application files
 COPY src .
@@ -16,4 +16,4 @@ COPY src .
 EXPOSE 5000
 
 # Run the application
-CMD ["python3", "src/app.py"]
+CMD ["python3", "app.py"]
