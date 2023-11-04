@@ -10,7 +10,7 @@ COPY src/requirements.txt .
 RUN pip3 install -r src/requirements.txt
 
 # Copy the Python application files
-COPY src/app.py .
+COPY src .
 
 # Declare the port number the container should expose
 EXPOSE 5000
