@@ -15,5 +15,8 @@ COPY src .
 # Declare the port number the container should expose
 EXPOSE 5000
 
+# Check code style & lint with flake8
+RUN pip3 install flake8
+
 # Run the application
 CMD ["python3", "app.py"]
