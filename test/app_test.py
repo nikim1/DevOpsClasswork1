@@ -1,7 +1,6 @@
 import unittest
-import socket
 
-from src.app import app
+from app import app
 
 class TestApp(unittest.TestCase):
     def setUp(self):
