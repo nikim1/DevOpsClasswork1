@@ -48,6 +48,18 @@ jobs:
       - name: Check style
         run: flake8 src
 
+  EditorconfigCheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install editorconfig-checker
+        run: pip install editorconfig-checker
+        
+      - name: Checking
+        run: ec
+
   build:
     runs-on: ubuntu-latest
     needs: ["SnykTest", "SonarCloudTest", "CheckCodeStyle"]
