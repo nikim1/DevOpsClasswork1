@@ -72,9 +72,18 @@ jobs:
       - name: Run markdownlint test
         run: markdownlint .
 
+  UnitTests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Run unit tests
+        run: python3 -m unittest test/app_test.py
+
   build:
     runs-on: ubuntu-latest
-    needs: ["SnykTest", "SonarCloudTest", "CheckCodeStyle", "EditorconfigCheck", "MarkdownfilesCheck"]
+    needs: ["SnykTest", "SonarCloudTest", "CheckCodeStyle", "EditorconfigCheck", "MarkdownfilesCheck", "UnitTests"]
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
