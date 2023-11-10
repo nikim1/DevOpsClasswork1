@@ -36,11 +36,23 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+  CheckCodeStyle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install flake8
+        run: python3 -m pip instaill flake8
+        
+      - name: Check style
+        run: flake8 src
+
   build:
     runs-on: ubuntu-latest
-    needs: ["SnykTest", "SonarCloudTest"]
+    needs: ["SnykTest", "SonarCloudTest", "CheckCodeStyle"]
     steps:
-      - name: Check out the code
+      - name: Checkout the code
         uses: actions/checkout@v2
 
       - name: Login to DockerHub
