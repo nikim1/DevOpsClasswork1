@@ -74,6 +74,7 @@ jobs:
 
   UnitTests:
     runs-on: ubuntu-latest
+    container: python:3
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
