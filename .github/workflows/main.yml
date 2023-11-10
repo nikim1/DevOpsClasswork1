@@ -60,8 +60,8 @@ jobs:
           severity: 'CRITICAL,HIGH'
 
       - name: Tag an image
-        run: docker tag my-first-python nikim1/DevOpsClasswork1
+        run: docker tag my-first-python nikim1/devopsclasswork1
 
       - name: Push Docker image
         run: |
-          docker push nikim1/DevOpsClasswork1
+          docker push nikim1/devopsclasswork1
