@@ -77,6 +77,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      
+      - name: Install dependencies
+        run: pip install -r src/requirements.txt
 
       - name: Run unit tests
         run: python3 -m unittest test/app_test.py
