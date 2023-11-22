@@ -40,7 +40,7 @@ jobs:
         run: npm install -g markdownlint-cli
 
       - name: Run markdownlint test
-        run: markdownlint .
+        run: markdownlint **/*.md
 
   UnitTests:
     runs-on: ubuntu-latest
