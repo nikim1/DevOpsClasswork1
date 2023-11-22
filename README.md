@@ -19,7 +19,6 @@ python3 src/app.py
 ```
 
 ## Tasks
-
 ### Style 
 
 - Create a new **public** repository and use this one as a template.
@@ -45,7 +44,8 @@ python3 src/app.py
 
 ### Containerization
 
-- Containerize the Python application in the `src/` directory. Create a Dockerfile and use ubuntu as a base image
+- Containerize the Python application in the `src/` directory.
+- Create a Dockerfile and use ubuntu as a base image
 - Validate locally that the container is working
 - Create a GitHub Actions workflow that builds the Docker image
 - Scan the built Docker image with Trivy as part of the existing workflow
